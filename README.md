@@ -2,7 +2,7 @@
 
 This project is aimed at building an NBA Ranking System. Know more details in "Project Report.pdf" file.
 
-## author
+## Author
 Team leader: Jin Li
 
 Team member: 1
@@ -12,7 +12,7 @@ Team member: 1
 You need download the Eclipse or Netbeans IDE for running this project.
 
 
-### Installing
+### Running
 
 First Step:
 Import the rankingSystem project in your IDE.
