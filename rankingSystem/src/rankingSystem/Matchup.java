@@ -5,22 +5,17 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 
 /**
  * @author jinli
- *
  */
 public class Matchup {
 
    
-    // if return 1, then team one win.
+    // calculate the win probability of team one when it meets with team two.
     public static double probabilityWinner(Team one, Team two) {
-
         double totalMean = one.mean - two.mean;
         double totalDev = Math.sqrt((one.dev) * (one.dev) + (two.dev) * (two.dev));
-
-        
         NormalDistribution nd = new NormalDistribution(totalMean, totalDev);
 
         return 1.0 - nd.cumulativeProbability(0.0);
-
     }
 
     public static double probabilityWinner(String one, String two, Ranking ranking) {

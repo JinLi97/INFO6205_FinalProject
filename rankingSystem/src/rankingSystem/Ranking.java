@@ -8,19 +8,15 @@ import java.util.Collections;
 
 public class Ranking {
 
-    private ArrayList<Team> teams;
+    private ArrayList<Team> teams; // list of teams in NBA
 
     public Ranking() {
-
         teams = new ArrayList<>();
-
-        readTeamFromCsv();
-        readFromCsv();
-
-        calculateTeamRank();
-
-        Collections.sort(teams, Collections.reverseOrder());
-        updateRankValue();
+        readTeamFromCsv();			//read team.
+        readFromCsv();				//read matchup data
+        calculateTeamRank();		//calculate team win probability
+        Collections.sort(teams, Collections.reverseOrder()); //sort list by team win probability.
+        updateRankValue();			//update the rank value
     }
 
     public ArrayList<Team> getTeams() {
@@ -31,6 +27,7 @@ public class Ranking {
         this.teams = teams;
     }
 
+    //read teams names from "team.csv"
     public void readTeamFromCsv() {
         String data = "team.csv";
         try ( BufferedReader br = new BufferedReader(new FileReader(data));) {
@@ -44,8 +41,9 @@ public class Ranking {
         }
     }
 
+    //read matchup data from "data.csv" or "19-data.csv".
     public void readFromCsv() {
-        String data = "19-data.csv";
+        String data = "19-20data.csv";
         try ( BufferedReader br = new BufferedReader(new FileReader(data));) {
             String line = null;
             while ((line = br.readLine()) != null) {
@@ -57,16 +55,15 @@ public class Ranking {
                     }
                 }
             }
-
             for (Team t : teams) {
                 t.updateNomalDis();
             }
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
+    //calculate the team win probability.
     private void calculateTeamRank() {
         for (Team t : teams) {
             t.calRank(teams);
@@ -74,6 +71,7 @@ public class Ranking {
 
     }
 
+    //update the team rank value.
     private void updateRankValue() {
         for (Team t : teams) {
             t.setRankValue(teams.indexOf(t) + 1);

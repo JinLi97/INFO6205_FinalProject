@@ -40,11 +40,12 @@ public class RankingTable extends javax.swing.JPanel {
         }
         
         for(Team t : ranking.getTeams()) {
-            Object row[] = new Object[4];
+            Object row[] = new Object[5];
             row[0] = t.getRankValue();
             row[1] = t.getName();
-            row[2] = t.getWin();
-            row[3] = t.getLose();
+            row[2] = t.rank;
+            row[3] = t.getWin();
+            row[4] = t.getLose();
       
             model.addRow(row);
         }
@@ -76,13 +77,13 @@ public class RankingTable extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Rank", "Team Name", "Win", "Lose"
+                "Rank", "Team Name", "win Probability", "Win", "Lose"
             }
         ));
         jScrollPane2.setViewportView(jTable1);

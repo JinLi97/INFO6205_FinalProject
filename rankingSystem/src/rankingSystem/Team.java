@@ -8,14 +8,15 @@ public class Team implements Comparable<Team> {
     private String name;
     private int win;
     private int lose;
-    private int rankValue;
+    private int rankValue; //rankvalue = 1 means this team is champion.
     
     public int dataNum;
     public double mean;
     public double dev;
     public double s;
-    public double rank;
+    public double rank; // total win probability.
 
+    //import NormalDistribution class for calculate the win probability.
     public NormalDistribution normalDistribution;
     
     public Team(){
@@ -60,6 +61,8 @@ public class Team implements Comparable<Team> {
         this.lose = lose;
     }
 
+    
+    //update the distribution if input a matchup result.
     public void updateDistribution(String line) {
         String[] fields = line.split(",");
         if (name.equals(fields[2])) {
@@ -85,19 +88,17 @@ public class Team implements Comparable<Team> {
         }
 
     }
-
+    
+    //update the mean and deviation of the distribution.
     public void addDataValue(double x) {
-        //mean = (mean * dataNum + x) / (dataNum + 1);
         dataNum++;
         s = s + 1.0 * (dataNum - 1) / dataNum * (x - mean) * (x - mean);
         mean = mean + (x - mean) / dataNum;
-
         dev = Math.sqrt(s / (dataNum - 1));
-
-//		mean += x;
-//		dataNum++;
     }
-
+    
+    
+    // calculate the total win probability between this team and rest of other team.
     public void calRank(List<Team> teams) {
         for (Team t : teams) {
             if (t.name.equals(this.name)) {
@@ -106,11 +107,15 @@ public class Team implements Comparable<Team> {
             rank += Matchup.probabilityWinner(this, t);
         }
     }
+    
 
+    //update the normaDistribution field.
     public void updateNomalDis() {
         this.normalDistribution = new NormalDistribution(mean, dev);
     }
 
+    
+    //compare teams by their rank.
     @Override
     public int compareTo(Team o) {
 
