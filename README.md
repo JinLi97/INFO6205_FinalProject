@@ -31,3 +31,5 @@ Win Probability:
 Click the Win Probability button on the left side, select team 1 and team 2, click OK button. The Win Probability will show up.
 
 <img src="Image/Win Probability.png" width="800" height="500">
+
+<img src="Image/Selected Win Probability.png" width="800" height="500">
