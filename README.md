@@ -9,7 +9,7 @@ Team member: 1
 
 ### Prerequisites
 
-You need download the Eclipse or Netbeans IDE for running this project.
+You need to download the Eclipse or Netbeans IDE for running this project.
 
 
 ### Running
