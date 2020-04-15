@@ -1,4 +1,4 @@
-# INFO6205_FinalProject
+# NBA Ranking System
 
 This project is aimed at building an NBA Ranking System. Know more details in "Project Report.pdf" file.
 
