@@ -1,6 +1,6 @@
 # INFO6205_FinalProject
 
-This project is aimed at building an NBA Ranking System. You can know more details in "Project Report" file.
+This project is aimed at building an NBA Ranking System. Know more details in "Project Report.pdf" file.
 
 ## author
 Team leader: Jin Li
